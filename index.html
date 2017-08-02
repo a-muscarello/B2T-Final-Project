@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+		<style>
+
+			body{
+				background: grey;
+				text-align: center;
+				font-family: tahoma;
+				border: solid 20px black;padding: 50px 0px 300px 0px;
+				border-radius: 20px;
+			
+			}
+		</style>
+
+		<h1>Local Deli Queue</h1>
+	
+		<style type="text/css">
+
+
+		h1 {
+			font-size: 50px;
+			
+		}
+
+		form, tr, input {
+			font-size: 25px;
+			color: navy ;
+
+		}
+
+	</style>
+	</head>
+	<body>
+
+		<form id="myDeli">
+			Customer Name:	<input type="text" id="n1">
+			<br>
+			Customer Order: <input type="text" id="n2">
+		
+		</form>
+
+			<input type="button" value="Add Customer" onclick="insertRow()"><br>
+			
+
+			<input type="button" value="Customer Served" onclick="insertPos()"><br> 
+	
+<!--			
+			<p id="myDeli"> has been served!</p>
+	
+			<input type="button" value="Customer Served" onclick="insertPos(console.log(" n1 " + " has been served!"))">  -->
+
+		<table id="myTable" border="2" align="center">
+			<tr>
+				<td length="150px">Position</td>
+				<br>
+				<td length="200px">Name</td>
+				<br>
+				<td length="150px">Order</td>
+				<br>
+			</tr>
+
+		</table>
+
+	<script type="text/javascript">
+
+		var index = 1;
+		
+		function insertRow(){
+			var table = document.getElementById("myTable");
+			var data1 = document.getElementById("n1").value;
+			var data2 = document.getElementById("n2").value;
+
+
+			var tr = document.createElement("tr");
+			var td1 = document.createElement("td");
+			var td2 = document.createElement("td");
+			var td3 = document.createElement("td");
+
+
+			td2.innerHTML = index;
+			index++
+			td1.innerHTML = data1;
+			td3.innerHTML = data2;
+			tr.appendChild(td2);
+			tr.appendChild(td1);
+			tr.appendChild(td3);
+			table.appendChild(tr);
+
+		}
+			
+		function insertPos(){
+		 	var table = document.getElementById("myTable").deleteRow(1);
+				
+				
+		document.getElementById("myDeli").innerHTML + [n1] + " has been served!";	
+		}
+
+/*
+
+		var order = {position: '1', name: (''), order: ('')};
+		
+		var deli = [];
+
+		deli.push(order);
+
+
+		console.log(deli);  
+		
+
+		function deliItem(arr){
+			for (var i = 0; i < arr.length; i++)
+			console.log(i[1] + arr[i].name + arr.order);
+		}
+			
+			deliItem(order);
+*/
+
+		
+
+	
+	</script>
+
+	</body>
+</html>
