@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+		<style>
+
+			body{
+				background: grey;
+				text-align: center;
+				font-family: tahoma;
+				border: solid 20px black;padding: 50px 0px 300px 0px;
+				border-radius: 20px;
+			
+			}
+		</style>
+
+		<h1>Local Deli Queue</h1>
+	
+		<style type="text/css">
+
+
+		h1 {
+			font-size: 50px;
+			
+		}
+
+		form, tr, input {
+			font-size: 25px;
+			color: navy ;
+
+		}
+
+
+	</style>
+	</head>
+	<body>
+		
+		<form id="myDeli">
+			Customer Name:	<input type="text" id="n1">
+			<br>
+			Customer Order: <input type="text" id="n2">
+		
+		</form>
+
+			<input type="button" value="Add Customer" onclick="insertRow()"><br>
+			
+
+			<input type="button" value="Customer Served" onclick="remove()"><br> 
+	
+		<p id="food order"></p>
+		<table id="myTable" border="2" align="center">
+			<tr>
+				<td length="150px">Position</td>
+				<br>
+				<td length="200px">Name</td>
+				<br>
+				<td length="150px">Order</td>
+				<br>
+			</tr>
+
+		</table>
+	
+	<script type="text/javascript">
+		
+
+		var deli = []
+
+		function insertRow(){
+			var data1 = document.getElementById("n1").value;
+			var data2 = document.getElementById("n2").value;
+		
+			var customer = {name: data1, order: data2}
+			deli.push(customer);
+			console.log(deli);
+			render();
+		}
+
+		function remove(){
+			var customer = 0; //deli.shift();
+			if (customer = deli.shift()){
+				document.getElementById("food order").innerHTML= customer.name + " has been served " + customer.order;
+			}else{
+				document.getElementById("food order").innerHTML = "There is nobody left to serve!";
+			
+			}
+			render();
+		}
+
+		function render(){
+			var table = document.getElementById("myTable");
+			table.innerHTML = ""
+			var tr = document.createElement("tr");
+			var td1 = document.createElement("td");
+			var td2 = document.createElement("td");
+			var td3 = document.createElement("td");
+
+			td2.innerHTML = "Position";
+			td1.innerHTML = "Name";
+			td3.innerHTML = "Order";
+
+			tr.appendChild(td2);
+			tr.appendChild(td1);
+			tr.appendChild(td3);
+			table.appendChild(tr);
+
+			for(var i=0; i < deli.length; i++){
+			
+				var tr = document.createElement("tr");
+				var td1 = document.createElement("td");
+				var td2 = document.createElement("td");
+				var td3 = document.createElement("td");
+
+				td2.innerHTML = i+1;
+				td1.innerHTML = deli[i].name;
+				td3.innerHTML = deli[i].order;
+
+				tr.appendChild(td2);
+				tr.appendChild(td1);
+				tr.appendChild(td3);
+				table.appendChild(tr);
+
+		}
+	}
+	</script>
+
+
+	</body>
+</html>
